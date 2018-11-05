@@ -25,13 +25,13 @@ class MainActivity : AppCompatActivity() {
         val tabLayout = tab_nav
         val viewPager = view_pager_video
 
-        val pagerAdapter = MyPagerAdapter(supportFragmentManager)
-//        val pagerAdapter = DemoPageAdapter.PageAdapter(supportFragmentManager)
+        //  val pagerAdapter = MyPagerAdapter(supportFragmentManager)
+        val pagerAdapter = PageAdapter(supportFragmentManager)
 
-        pagerAdapter.addFragment(FirstFragment.newInstance(), "First")
-        pagerAdapter.addFragment(SecondFragment.newInstance(), "Second")
-        pagerAdapter.addFragment(FirstFragment.newInstance(), "Third")
-        pagerAdapter.addFragment(SecondFragment.newInstance(), "Fourth")
+        pagerAdapter.addFragment("First")
+        pagerAdapter.addFragment( "Second")
+        pagerAdapter.addFragment( "Third")
+        pagerAdapter.addFragment( "Fourth")
 
         viewPager.adapter = pagerAdapter
         tabLayout.setupWithViewPager(viewPager)
@@ -39,26 +39,5 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private inner class MyPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
-        private val fragments = mutableListOf<Fragment>()
-        private val fragmentTitles = mutableListOf<String>()
-
-        override fun getItem(p0: Int): Fragment {
-            return fragments[p0]
-        }
-
-        override fun getCount(): Int {
-           return fragments.size
-        }
-
-        override fun getPageTitle(position: Int): CharSequence? {
-            return fragmentTitles[position]
-        }
-
-        fun addFragment(fragment: Fragment, title: String) {
-            fragments.add(fragment)
-            fragmentTitles.add(title)
-        }
-    }
 }
