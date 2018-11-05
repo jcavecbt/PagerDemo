@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_first.view.*
 
 class FirstFragment : Fragment() {
 
-    private lateinit var textView: TextView
+    private var textView: TextView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +33,11 @@ class FirstFragment : Fragment() {
 //        })
 
         return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        textView = null
     }
 
 
